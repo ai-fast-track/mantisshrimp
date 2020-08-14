@@ -19,7 +19,7 @@ Based on these optimizations and better backbones, we have developed a new famil
 
 ![image](https://airctic.github.io/mantisshrimp/images/effecientdet-fig3.png)
 
-## Mantisshrimp Quick Example: How to train the **Fridge Object Dataset**
+## Mantisshrimp Quick Example: How to train the **PETS Dataset**
 
 [**Source Code**](https://airctic.github.io/mantisshrimp/examples/how_train_dataset_exp/)
 ![image](https://airctic.github.io/mantisshrimp/images/effecientdet-training.png)
