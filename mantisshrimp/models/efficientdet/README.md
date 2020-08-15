@@ -55,7 +55,7 @@ trainer = pl.Trainer(max_epochs=10, gpus=1)
 trainer.fit(light_model, train_dl, valid_dl)
 ```
 
-## Background: Paper Abstract
+## Paper Abstract
 Model efficiency has become increasingly important in computer vision. In this paper, we systematically study neural network architecture design choices for object detection and propose several key optimizations to improve efficiency.
 First, we propose a weighted bi-directional feature pyramid network (BiFPN), which allows easy and fast multiscale feature fusion; Second, we propose a compound scaling method that uniformly scales the resolution, depth, and width for all backbone, feature network, and box/class prediction networks at the same time. 
 
