@@ -88,8 +88,6 @@ def get_dataloaders(
     model_type,
     records_list: List[List[dict]],
     tfms_list: [],
-    size,
-    presize,
     batch_tfms=None,
     batch_size=16,
     num_workers=4,
@@ -103,8 +101,6 @@ def get_dataloaders(
         records: A list of records ->  [train_records, valid_records].
             Both train_records, valid_records are of type List[dict]
         tfms: List of Transforms to be applied to each dataset: [train_tfms, valid_tfms].
-        size: The final size of the image.
-        presizing: Rescale the image before applying other transfroms.
         batch_size: batch size.
         num_workers: number of workers.
 
