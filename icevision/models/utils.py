@@ -5,6 +5,7 @@ __all__ = [
     "transform_dl",
     "common_build_batch",
     "_predict_dl",
+    "get_dataloaders",
 ]
 
 from icevision.imports import *
@@ -86,7 +87,7 @@ def _predict_dl(
 def get_dataloaders(
     model_type,
     records_list: List[List[dict]],
-    tfms_list: List[Transform],
+    tfms_list: [],
     size,
     presize,
     batch_tfms=None,
@@ -102,7 +103,6 @@ def get_dataloaders(
         records: A list of records ->  [train_records, valid_records].
             Both train_records, valid_records are of type List[dict]
         tfms: List of Transforms to be applied to each dataset: [train_tfms, valid_tfms].
-            Both train_tfms and valid_tfms are of type Transform
         size: The final size of the image.
         presizing: Rescale the image before applying other transfroms.
         batch_size: batch size.
