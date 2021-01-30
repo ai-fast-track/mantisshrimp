@@ -35,7 +35,7 @@ def model(
     # Returns
         A PyTorch model.
     """
-    model = model(
+    model = create_model(
         model_name=model_name,
         pretrained=pretrained,
         checkpoint_path=checkpoint_path,
