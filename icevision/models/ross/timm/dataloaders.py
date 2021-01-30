@@ -101,7 +101,7 @@ def build_train_batch(records, batch_tfms):
     xb = torch.stack(images)
     yb = tensor(labels)
 
-    return (xb, yb), records
+    return xb, yb
 
 
 # def build_train_batch(records, batch_tfms=None):
