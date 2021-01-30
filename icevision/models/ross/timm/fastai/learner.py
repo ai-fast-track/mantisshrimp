@@ -3,7 +3,7 @@ __all__ = ["learner"]
 from icevision.imports import *
 from icevision.engines.fastai import *
 # from icevision.models.ross.timm.loss_fn import loss_fn
-from icevision.models.ross.timm.fastai.callbacks import TIMMDetCallback
+from icevision.models.ross.timm.fastai.callbacks import TIMMCallback
 
 
 def learner(
