@@ -19,5 +19,10 @@ if SoftDependencies.effdet:
     from icevision.models.ross import efficientdet
     from icevision.models import ross
 
+if SoftDependencies.timm:
+    # backwards compatibility
+    from icevision.models.ross import timm
+    from icevision.models import ross
+
 if SoftDependencies.mmdet:
     from icevision.models import mmdet
