@@ -104,47 +104,47 @@ def build_train_batch(records, batch_tfms):
     return (xb, yb), records
 
 
-def build_train_batch(records, batch_tfms=None):
-    """Builds a batch in the format required by the model when training.
+# def build_train_batch(records, batch_tfms=None):
+#     """Builds a batch in the format required by the model when training.
 
-    # Arguments
-        records: A `Sequence` of records.
-        batch_tfms: Transforms to be applied at the batch level.
+#     # Arguments
+#         records: A `Sequence` of records.
+#         batch_tfms: Transforms to be applied at the batch level.
 
-    # Returns
-        A tuple with two items. The first will be a tuple like `(images, targets)`,
-        in the input format required by the model. The second will be an updated list
-        of the input records with `batch_tfms` applied.
+#     # Returns
+#         A tuple with two items. The first will be a tuple like `(images, targets)`,
+#         in the input format required by the model. The second will be an updated list
+#         of the input records with `batch_tfms` applied.
 
-    # Examples
+#     # Examples
 
-    Use the result of this function to feed the model.
-    ```python
-    batch, records = build_train_batch(records)
-    outs = model(*batch)
-    ```
-    """
-    records = common_build_batch(records, batch_tfms=batch_tfms)
+#     Use the result of this function to feed the model.
+#     ```python
+#     batch, records = build_train_batch(records)
+#     outs = model(*batch)
+#     ```
+#     """
+#     records = common_build_batch(records, batch_tfms=batch_tfms)
 
-    images = []
-    targets = {"bbox": [], "cls": []}
-    for record in records:
-        image = im2tensor(record["img"])
-        images.append(image)
+#     images = []
+#     targets = {"bbox": [], "cls": []}
+#     for record in records:
+#         image = im2tensor(record["img"])
+#         images.append(image)
 
-        if len(record["labels"]) == 0:
-            targets["cls"].append(tensor([0], dtype=torch.float))
-            targets["bbox"].append(tensor([[0, 0, 0, 0]], dtype=torch.float))
-        else:
-            labels = tensor(record["labels"], dtype=torch.float)
-            targets["cls"].append(labels)
+#         if len(record["labels"]) == 0:
+#             targets["cls"].append(tensor([0], dtype=torch.float))
+#             targets["bbox"].append(tensor([[0, 0, 0, 0]], dtype=torch.float))
+#         else:
+#             labels = tensor(record["labels"], dtype=torch.float)
+#             targets["cls"].append(labels)
 
-            bboxes = tensor([bbox.yxyx for bbox in record["bboxes"]], dtype=torch.float)
-            targets["bbox"].append(bboxes)
+#             bboxes = tensor([bbox.yxyx for bbox in record["bboxes"]], dtype=torch.float)
+#             targets["bbox"].append(bboxes)
 
-    images = torch.stack(images)
+#     images = torch.stack(images)
 
-    return (images, targets), records
+#     return (images, targets), records
 
 
 # def build_valid_batch(records, batch_tfms):
