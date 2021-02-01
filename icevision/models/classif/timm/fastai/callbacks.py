@@ -1,6 +1,6 @@
 __all__ = ["TIMMCallback"]
 
-from icevision.models.ross import timm
+from icevision.models.classif import timm
 from icevision.engines.fastai import *
 
 

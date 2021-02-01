@@ -49,7 +49,8 @@ def convert_raw_predictions(
         
         pred = {
             "scores": raw_pred,
-            "labels": list(range(len(raw_pred)))
+            "labels": [raw_pred.argmax()]
+            # "labels": list(range(len(raw_pred)))
         }
         preds.append(pred)
 

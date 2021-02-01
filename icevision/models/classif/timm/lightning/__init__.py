@@ -1,1 +1,1 @@
-from icevision.models.ross.efficientdet.lightning.model_adapter import *
+from icevision.models.classif.timm.lightning.model_adapter import *

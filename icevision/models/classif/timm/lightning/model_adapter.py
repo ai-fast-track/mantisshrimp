@@ -3,11 +3,11 @@ __all__ = ["ModelAdapter"]
 from icevision.imports import *
 from icevision.metrics import *
 from icevision.engines.lightning.lightning_model_adapter import LightningModelAdapter
-from icevision.models.ross import efficientdet
+from icevision.models.classif import timm
 
 
 class ModelAdapter(LightningModelAdapter, ABC):
-    """Lightning module specialized for EfficientDet, with metrics support.
+    """Lightning module specialized for timm, with metrics support.
 
     The methods `forward`, `training_step`, `validation_step`, `validation_epoch_end`
     are already overriden.
@@ -31,7 +31,7 @@ class ModelAdapter(LightningModelAdapter, ABC):
         (xb, yb), records = batch
         preds = self(xb, yb)
 
-        loss = efficientdet.loss_fn(preds, yb)
+        loss = timm.loss_fn(preds, yb)
 
         for k, v in preds.items():
             self.log(f"train/{k}", v)
@@ -43,8 +43,8 @@ class ModelAdapter(LightningModelAdapter, ABC):
 
         with torch.no_grad():
             raw_preds = self(xb, yb)
-            preds = efficientdet.convert_raw_predictions(raw_preds["detections"], 0)
-            loss = efficientdet.loss_fn(raw_preds, yb)
+            preds = timm.convert_raw_predictions(raw_preds["detections"], 0)
+            loss = timm.loss_fn(raw_preds, yb)
 
         self.accumulate_metrics(records, preds)
 

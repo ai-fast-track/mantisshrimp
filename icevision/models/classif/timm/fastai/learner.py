@@ -2,8 +2,8 @@ __all__ = ["learner"]
 
 from icevision.imports import *
 from icevision.engines.fastai import *
-# from icevision.models.ross.timm.loss_fn import loss_fn
-from icevision.models.ross.timm.fastai.callbacks import TIMMCallback
+# from icevision.models.classif.timm.loss_fn import loss_fn
+from icevision.models.classif.timm.fastai.callbacks import TIMMCallback
 
 
 def learner(

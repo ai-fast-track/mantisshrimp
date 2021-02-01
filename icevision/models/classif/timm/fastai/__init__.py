@@ -1,2 +1,2 @@
-from icevision.models.ross.timm.fastai.callbacks import *
-from icevision.models.ross.timm.fastai.learner import *
+from icevision.models.classif.timm.fastai.callbacks import *
+from icevision.models.classif.timm.fastai.learner import *
