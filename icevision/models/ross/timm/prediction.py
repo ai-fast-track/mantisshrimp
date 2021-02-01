@@ -4,7 +4,6 @@ from icevision.imports import *
 from icevision.utils import *
 from icevision.core import *
 from icevision.models.utils import _predict_dl
-from effdet import DetBenchTrain, DetBenchPredict, unwrap_bench
 
 
 @torch.no_grad()
@@ -39,23 +38,19 @@ def predict_dl(
         **predict_kwargs,
     )
 
-
+ # TODO Handle both single and multi-label cases 
 def convert_raw_predictions(
     raw_preds: torch.Tensor, detection_threshold: float
 ) -> List[dict]:
-    # dets = raw_preds.detach().cpu().numpy()
-    # preds = []
-    # for det in dets:
-    #     if detection_threshold > 0:
-    #         scores = det[:, 4]
-    #         keep = scores > detection_threshold
-    #         det = det[keep]
 
-    #     pred = {
-    #         "scores": det[:, 4],
-    #         "labels": det[:, 5].astype(int),
-    #         "bboxes": [BBox.from_xyxy(*xyxy) for xyxy in det[:, :4]],
-    #     }
-    #     preds.append(pred)
+    raw_preds = raw_preds.detach().cpu().numpy()
+    preds = []
+    for raw_pred in raw_preds:
+        
+        pred = {
+            "scores": raw_pred,
+            "labels": list(range(len(raw_pred)))
+        }
+        preds.append(pred)
 
-    return raw_preds
+    return preds
